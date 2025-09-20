@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Michroma } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./theme-provider";
 
 const michroma = Michroma({
   weight: "400",
@@ -19,8 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${michroma.variable}`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${michroma.variable}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
