@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Navbar from "./Components/navbar/navbar";
 
 export default function Home() {
   return (
     <>
-      <h1 className="michroma">My Kanban Board</h1>
+      <Navbar />
     </>
   );
 }
