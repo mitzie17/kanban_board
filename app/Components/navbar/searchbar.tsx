@@ -1,4 +1,3 @@
-"use client";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "next-themes";
 import { IoSearch } from "react-icons/io5";
