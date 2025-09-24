@@ -2,16 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
@@ -26,6 +18,7 @@ export default function SortingDropdown() {
       {/* trigger button */}
       <DropdownMenuTrigger asChild>
         <Button variant="ghost">
+          {/* If selected option is A-Z the down arrow will be displayed if not then the up arrow will be displayed */}
           <span className="font-medium text-sm">{selectedOption}</span>
           {selectedOption === "A-Z" ? (
             <IoMdArrowDown className="text-sm" />
@@ -34,58 +27,20 @@ export default function SortingDropdown() {
           )}
         </Button>
       </DropdownMenuTrigger>
-
+      {/* the options A-Z and Z-A are mapped to be displayed in the dropdown items */}
       <DropdownMenuContent className="w-20 michroma">
         {options.map((option, index) => (
-            
+          <DropdownMenuCheckboxItem
+            key={index}
+            className="h-9"
+            /* the check will be based on the condition of the selected options state is equal to the option in the array */
+            checked={selectedOption === option}
+            /* when an option is selected, the state will be updated */
+            onCheckedChange={() => setSelectedOption(option)}
+          >
+            {option}
+          </DropdownMenuCheckboxItem>
         ))}
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Billing
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Settings
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Keyboard shortcuts
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Email</DropdownMenuItem>
-                <DropdownMenuItem>Message</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>More...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            New Team
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuItem disabled>API</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
