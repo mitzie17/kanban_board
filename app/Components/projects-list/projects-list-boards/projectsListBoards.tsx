@@ -1,4 +1,4 @@
-import SingleBoard from "./singleBoard";
+import SingleBoard, { Board } from "./singleBoard";
 
 export default function ProjectsListBoards() {
   const boards: Board[] = [
