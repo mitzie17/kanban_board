@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { MdKeyboardArrowDown, MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import TasksDropDown from "../../drop-downs/taskDropdown";
 
 export default function SingleTask() {
   return (
@@ -8,14 +9,14 @@ export default function SingleTask() {
       <CardHeader className="p-4">
         <div className="flex justify-between items-center">
           {/* priority container */}
-          <div className="p-1 py-[4px] bg-green-500/15 rounded-3xl px-4 pr-4 font-medium text-green-900 flex items-center gap-1 text-sm">
+          <div className="p-1 py-[4px] bg-green-500/15 rounded-3xl px-2 pr-4 font-medium text-green-900 flex items-center gap-1 text-sm">
             {/* priority icon */}
             <MdKeyboardDoubleArrowDown className="mb-[2px]" />
             {/* priority */}
             <span className="text-[12px]">Low</span>
           </div>
           {/* drop down with more options */}
-          {/* <TasksDropDown /> */}
+          <TasksDropDown />
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-3 mt-1">
