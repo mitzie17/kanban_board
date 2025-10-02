@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import Navbar from "./Components/navbar/navbar";
 import ProjectList from "./Components/projects-list/projectList";
+import RightSidebar from "./Components/right-side-bar/rightSidebar";
 
 export default function Home() {
   const { theme } = useTheme();
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <div className="grid grid-cols-[3fr_1fr] px-6 mt-8 gap-4 michroma">
         <ProjectList />
+        <RightSidebar />
       </div>
     </div>
   );
