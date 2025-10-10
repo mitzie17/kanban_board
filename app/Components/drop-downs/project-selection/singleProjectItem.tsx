@@ -12,5 +12,38 @@ export default function SingleProjectItem({
 }) {
   // Destructure the project object
   const { name: projectName, tasks, icon: ProjectIcon } = project;
-  return <CommandItem>hello</CommandItem>;
+  return (
+    <CommandItem
+      value={projectName}
+      // when user selected the project
+      onSelect={(value: string) => {
+        // find the project using the find method
+        const findProject = projects.find((proj) => proj.name === value);
+        // if it is not undefined, use the onSelectedItem function to update the parent component
+        // function which is onSelectedProject
+        if (findProject) {
+          onSelectedItem(findProject);
+        }
+      }}
+      className="cursor-pointer hover:bg-gray-100 rounded-lg p-2"
+    >
+      <div className="flex items-center justify-between w-full">
+        {/* container for project icon and name */}
+        <div className="flex items-center gap-3">
+          {/* project icon */}
+          <div className="size-8 bg-primary flex items-center justify-center rounded-md text-white">
+            <ProjectIcon />
+          </div>
+          {/* container for project name and tasks number */}
+          <div className="flex flex-col">
+            <span className="font-medium">{projectName}</span>
+            <span className="text-[12px] text-gray-500">
+              {tasks.length} Tasks
+            </span>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </CommandItem>
+  );
 }
