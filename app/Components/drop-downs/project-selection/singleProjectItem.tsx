@@ -1,5 +1,6 @@
 import { CommandItem } from "@/components/ui/command";
 import { Project, projects } from "./projectSelection";
+import { IoMdCheckmark } from "react-icons/io";
 
 export default function SingleProjectItem({
   project,
@@ -31,8 +32,8 @@ export default function SingleProjectItem({
         {/* container for project icon and name */}
         <div className="flex items-center gap-3">
           {/* project icon */}
-          <div className="size-8 bg-primary flex items-center justify-center rounded-md text-white">
-            <ProjectIcon />
+          <div className="size-8 bg-primary flex items-center justify-center rounded-md">
+            <ProjectIcon className="text-white" />
           </div>
           {/* container for project name and tasks number */}
           <div className="flex flex-col">
@@ -42,7 +43,12 @@ export default function SingleProjectItem({
             </span>
           </div>
         </div>
-        <div></div>
+        {/* checkmark for selected project */}
+        {isSelected && (
+          <div className="text-primary">
+            <IoMdCheckmark size={12} />
+          </div>
+        )}
       </div>
     </CommandItem>
   );
